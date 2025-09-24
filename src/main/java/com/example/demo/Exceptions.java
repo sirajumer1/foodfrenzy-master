@@ -14,7 +14,7 @@ public class Exceptions
 	public String handler()
 	{
 		System.out.println("Exception Handled....!!!!");
-		return "exception"; 
+		return "com/example/demo/exception";
 	}
 
 

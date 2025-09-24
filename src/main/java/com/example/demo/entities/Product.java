@@ -1,4 +1,6 @@
 package com.example.demo.entities;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,45 +9,94 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "product_table")
-public class Product
-{
+public class Product {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int pid;
-	private String pname;
-	private double pprice;
-	private String pdescription;
+	@Column(name = "pid")  // Database column is still 'pid'
+	private Long id;        // But Java field is 'id' for cart compatibility
 
-	public int getPid() {
-		return pid;
+	@Column(name = "pname")
+	private String name;
+
+	@Column(name = "pprice")
+	private Double price;
+
+	@Column(name = "pdescription")
+	private String description;
+
+	// Constructors
+	public Product() {
 	}
-	public void setPid(int pid) {
-		this.pid = pid;
+
+	// NEW Getters and Setters (cart-compatible)
+	public Long getId() {
+		return id;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	// OPTIONAL: Keep old methods for backward compatibility if needed
+	public Long getPid() {
+		return id;
+	}
+
+	public void setPid(Long pid) {
+		this.id = pid;
+	}
+
 	public String getPname() {
-		return pname;
+		return name;
 	}
+
 	public void setPname(String pname) {
-		this.pname = pname;
+		this.name = pname;
 	}
-	public double getPprice() {
-		return pprice;
+
+	public Double getPprice() {
+		return price;
 	}
-	public void setPprice(double pprice) {
-		this.pprice = pprice;
+
+	public void setPprice(Double pprice) {
+		this.price = pprice;
 	}
+
 	public String getPdescription() {
-		return pdescription;
+		return description;
 	}
+
 	public void setPdescription(String pdescription) {
-		this.pdescription = pdescription;
+		this.description = pdescription;
 	}
+
 	@Override
 	public String toString() {
-		return "Product [pid=" + pid + ", pname=" + pname + ", pprice=" + pprice + ", pdescription=" + pdescription
-				+ "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
 	}
-
-
-
 }

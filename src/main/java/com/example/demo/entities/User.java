@@ -2,16 +2,9 @@ package com.example.demo.entities;
 
 import java.util.List;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Value;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -26,6 +19,11 @@ public class User {
 	private String upassword;
 	private Long unumber;
 	private boolean verified = false; // default value
+
+
+	// Add this to your existing User.java entity
+
+
 
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

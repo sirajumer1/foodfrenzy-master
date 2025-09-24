@@ -30,7 +30,7 @@ public class ProductController
 
 	//	UpdateProduct
 	@GetMapping("/updatingProduct/{productId}")
-	public String updateProduct(@ModelAttribute Product product,@PathVariable("productId") int id)
+	public String updateProduct(@ModelAttribute Product product,@PathVariable("productId") long id)
 	{
 
 		this.productServices.updateproduct(product, id);

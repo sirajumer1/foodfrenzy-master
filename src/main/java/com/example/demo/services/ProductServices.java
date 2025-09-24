@@ -25,24 +25,22 @@ public class ProductServices
 		return products;
 	}
 
-	public Product getProduct(int id)
-	{
-		Optional<Product> optional = this.productRepository.findById(id);
-		Product product=optional.get();
-		return product;
+	public Product getProduct(Long id) {
+		int productId = id.intValue();  // Convert once
+		Optional<Product> optional = this.productRepository.findById(productId);
+		return optional.orElse(null);  // Better than .get()
 	}
 
-	public void updateproduct(Product p,int id)
-	{
+	public void updateproduct(Product p, Long id) {
 		p.setPid(id);
-		Optional<Product> optional = this.productRepository.findById(id);
-		Product prod=optional.get();
+		int productId = id.intValue();  // Convert once
+		Optional<Product> optional = this.productRepository.findById(productId);
 
-		if(prod.getPid()==id)
-		{
-			this.productRepository.save(p);				
+		if(optional.isPresent() && optional.get().getPid() == id) {
+			this.productRepository.save(p);
 		}
 	}
+
 	public void deleteProduct(int id)
 	{
 		this.productRepository.deleteById(id);
@@ -51,7 +49,7 @@ public class ProductServices
 	public Product getProductByName(String name)
 	{
 		
-		Product product= this.productRepository.findByPname(name);
+		Product product= this.productRepository.findByName(name);
 		if(product!=null)
 		{
 			return product;

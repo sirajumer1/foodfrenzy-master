@@ -143,7 +143,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/updateProduct/{productId}")
-	public String updateProduct(@PathVariable("productId") int id,Model model)
+	public String updateProduct(@PathVariable("productId") long id,Model model)
 	{
 		Product product=this.productServices.getProduct(id);
 		System.out.println(product);
