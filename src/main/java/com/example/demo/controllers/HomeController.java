@@ -1,4 +1,5 @@
 package com.example.demo.controllers;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,40 +12,42 @@ import com.example.demo.loginCredentials.AdminLogin;
 import com.example.demo.services.ProductServices;
 
 @Controller
-public class HomeController 
-{
+public class HomeController {
 	@Autowired
 	private ProductServices productServices;
-	@GetMapping(value = {"/home", "/"})
-	public String home()
-	{
+
+	@GetMapping(value = { "/home", "/" })
+	public String home(Model model) {
+		List<Product> allProducts = this.productServices.getAllProducts();
+		model.addAttribute("products", allProducts);
 		return "Home";
 	}
 
 	@GetMapping("/products")
-	public String products( Model model)
-	{ 
+	public String products(Model model) {
 		List<Product> allProducts = this.productServices.getAllProducts();
 		model.addAttribute("products", allProducts);
 		return "Products";
 	}
 
 	@GetMapping("/location")
-	public String location()
-	{
+	public String location() {
 		return "Locate_us";
 	}
 
 	@GetMapping("/about")
-	public String about()
-	{
+	public String about() {
 		return "About";
 	}
 
 	@GetMapping("/login")
-	public String login(Model model)
-	{
-		model.addAttribute("adminLogin",new AdminLogin());
+	public String login(Model model) {
+		model.addAttribute("adminLogin", new AdminLogin());
 		return "Login";
+	}
+
+	@GetMapping("/payment")
+	public String payment() {
+		return "payment";
 	}
 }

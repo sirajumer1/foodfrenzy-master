@@ -1,4 +1,5 @@
 package com.example.demo.controllers;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,34 +15,31 @@ import com.example.demo.entities.Product;
 import com.example.demo.services.ProductServices;
 
 @Controller
-public class ProductController 
-{
+public class ProductController {
 	@Autowired
 	private ProductServices productServices;
 
-	//	AddProduct
+	// AddProduct
 	@PostMapping("/addingProduct")
-	public String addProduct(@ModelAttribute Product product)
-	{
+	public String addProduct(@ModelAttribute Product product) {
 
 		this.productServices.addProduct(product);
 		return "redirect:/admin/services";
 	}
 
-	//	UpdateProduct
+	// UpdateProduct
 	@GetMapping("/updatingProduct/{productId}")
-	public String updateProduct(@ModelAttribute Product product,@PathVariable("productId") long id)
-	{
+	public String updateProduct(@ModelAttribute Product product, @PathVariable("productId") long id) {
 
 		this.productServices.updateproduct(product, id);
 		return "redirect:/admin/services";
 	}
-	//DeleteProduct
+
+	// DeleteProduct
 	@GetMapping("/deleteProduct/{productId}")
-	public String delete(@PathVariable("productId") int id)
-	{
+	public String delete(@PathVariable("productId") Long id) {
 		this.productServices.deleteProduct(id);
 		return "redirect:/admin/services";
 	}
-	
+
 }

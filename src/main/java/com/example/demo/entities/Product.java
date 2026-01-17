@@ -9,12 +9,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "product_table")
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pid")  // Database column is still 'pid'
-	private Long id;        // But Java field is 'id' for cart compatibility
+	@Column(name = "pid") // Database column is still 'pid'
+	private Long id; // But Java field is 'id' for cart compatibility
 
 	@Column(name = "pname")
 	private String name;
@@ -25,8 +26,18 @@ public class Product {
 	@Column(name = "pdescription")
 	private String description;
 
+	@Column(name = "pimage")
+	private String image;
+
 	// Constructors
 	public Product() {
+	}
+
+	public Product(String name, Double price, String description, String image) {
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.image = image;
 	}
 
 	// NEW Getters and Setters (cart-compatible)
@@ -60,6 +71,14 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	// OPTIONAL: Keep old methods for backward compatibility if needed

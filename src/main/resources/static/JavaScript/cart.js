@@ -1,66 +1,13 @@
 // Configuration
-const USER_ID = 1; // Change this to match your logged-in user
+// Cart Logic
 const API_BASE_URL = "http://localhost:8080/api";
+const USER_ID = (typeof CURRENT_USER_ID !== 'undefined' && CURRENT_USER_ID !== null) ? CURRENT_USER_ID : null;
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('Cart page loaded');
-    loadProducts();
     loadCart();
 });
-
-// ============================================
-// PRODUCTS FUNCTIONS
-// ============================================
-
-async function loadProducts() {
-    const productList = document.getElementById('product-list');
-
-    try {
-        // Try to fetch from your backend API (if you have a products endpoint)
-        const response = await fetch(`${API_BASE_URL}/products`);
-        if (response.ok) {
-            const products = await response.json();
-            displayProducts(products);
-        } else {
-            throw new Error('Products endpoint not found');
-        }
-    } catch (error) {
-        console.log('Using sample products');
-        // Use sample products from your database
-        const sampleProducts = [
-            { pid: 1, pname: "Afghan Chicken", pprice: 100, pdescription: "Delicious spicy chicken dish" },
-            { pid: 2, pname: "Matar Paneer", pprice: 100, pdescription: "Cottage cheese with peas" },
-            { pid: 3, pname: "Veg Pulao", pprice: 100, pdescription: "Aromatic rice with vegetables" }
-        ];
-        displayProducts(sampleProducts);
-    }
-}
-
-function displayProducts(products) {
-    const productList = document.getElementById('product-list');
-
-    if (!products || products.length === 0) {
-        productList.innerHTML = '<p class="empty-cart">No products available</p>';
-        return;
-    }
-
-    productList.innerHTML = '';
-
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.innerHTML = `
-            <h3>${product.pname || product.name}</h3>
-            <p class="price">₹${product.pprice || product.price}</p>
-            <p class="description">${product.pdescription || product.description || 'Delicious food item'}</p>
-            <button onclick="addToCart(${product.pid || product.id})">
-                Add to Cart
-            </button>
-        `;
-        productList.appendChild(productCard);
-    });
-}
 
 // ============================================
 // CART FUNCTIONS
@@ -98,9 +45,12 @@ function displayCart(cart) {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
-            <div class="cart-item-header">
-                <h4>${item.product.pname || item.product.name}</h4>
-                <span class="cart-item-price">₹${item.price}</span>
+            <div class="cart-item-info">
+                <img src="${item.product.image || '/Images/logo.png'}" alt="Product" class="cart-item-img">
+                <div class="cart-item-details">
+                     <h4>${item.product.pname || item.product.name}</h4>
+                     <span class="cart-item-price">₹${item.price}</span>
+                </div>
             </div>
             <div class="cart-item-controls">
                 <div class="quantity-control">
@@ -111,7 +61,7 @@ function displayCart(cart) {
                 </div>
                 <button class="btn-remove" onclick="removeFromCart(${item.id})">Remove</button>
             </div>
-            <p style="margin-top: 10px; color: #666;">Subtotal: ₹${(item.price * item.quantity).toFixed(2)}</p>
+            <p style="margin-top: 10px; color: #666; text-align: right;">Subtotal: ₹${(item.price * item.quantity).toFixed(2)}</p>
         `;
         cartItemsContainer.appendChild(cartItem);
     });

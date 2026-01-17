@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home : Pavan Tea</title>
-    <link rel="stylesheet" href="" th:href="@{/css/Navigation.css}">
-    <link rel="stylesheet" href="" th:href="@{/css/Home.css}">
+    <title>Food Frenzy</title>
+    <!-- Google Fonts: Poppins for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/Navigation.css}">
 </head>
+
 <body>
-    <nav th:fragment="navbar()">
-        <img th:src="@{/Images/logo.png}" alt="Logo" class="logo">
-        <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/location">Locate Us</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/login">Log In <i class="fa-duotone fa-arrow-left-to-arc"></i></a></li>
-        </ul>
+    <nav th:fragment="navbar()" class="navbar">
+        <div class="nav-container">
+            <a href="/home" class="logo-link">
+                <img th:src="@{/Images/logo.png}" alt="FoodFrenzy" class="logo">
+                <span class="brand-name">Food<span class="highlight">Frenzy</span></span>
+            </a>
+
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="/home" class="nav-item"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="/products" class="nav-item"><i class="fa-solid fa-utensils"></i> Menu</a></li>
+                    <li><a href="/location" class="nav-item"><i class="fa-solid fa-location-dot"></i> Locations</a></li>
+                    <li><a href="/about" class="nav-item"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <a href="/cart" class="cart-btn" title="View Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Cart</span>
+                    <!-- Optional: Add notification dot if needed in future -->
+                </a>
+                <!-- Profile Section (Visible when logged in) -->
+                <div class="user-profile" th:if="${session.user != null}">
+                    <div class="profile-container">
+                        <img th:src="@{/Images/logo.png}" alt="Profile" class="profile-pic">
+                        <span th:text="${session.user.uname}" class="username">User</span>
+                    </div>
+                    <a href="/login" class="logout-link" title="Logout"><i
+                            class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
+
+                <!-- Login Button (Visible when NOT logged in) -->
+                <a href="/login" class="login-btn" th:if="${session.user == null}">
+                    <i class="fa-regular fa-user"></i> Login
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
     </nav>
 </body>
+
 </html>
-
-

@@ -15,4 +15,11 @@ import com.example.demo.services.OrderServices;
 @Controller
 public class OrderController {
 
+    @GetMapping("/order-success")
+    public String orderSuccess(
+            @org.springframework.web.bind.annotation.RequestParam(value = "amount", required = false) Double amount,
+            Model model) {
+        model.addAttribute("amount", amount);
+        return "Order_success";
+    }
 }

@@ -37,8 +37,9 @@ public class CartServices {
         Cart cart = getOrCreateCart(userId);
 
         // Find product
-        Product product = productRepository.findById(request.getProductId().intValue())
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + request.getProductId()));
+        Product product = productRepository.findById(request.getProductId())
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Product not found with id: " + request.getProductId()));
 
         // Check if item already exists in cart
         Optional<CartItem> existingItem = cartItemRepository
@@ -144,7 +145,7 @@ public class CartServices {
     // Helper methods
 
     private Cart getOrCreateCart(Long userId) {
-        return cartRepository.findByUserId(userId)
+        return cartRepository.findByUserIdWithItems(userId)
                 .orElseGet(() -> {
                     Cart newCart = new Cart(userId);
                     return cartRepository.save(newCart);
