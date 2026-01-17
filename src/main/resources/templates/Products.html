@@ -104,6 +104,7 @@
             margin-bottom: 15px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             height: 2.7em;
@@ -252,7 +253,7 @@
         function addToCart(button) {
             const productId = button.getAttribute('data-product-id');
             // Get User ID from Session (injected by Thymeleaf)
-            const userId = [[${ session.user != null ? session.user.u_id : 'null' }]];
+            const userId = /*[[${ session.user != null ? session.user.u_id : 'null' }]]*/ 'null';
 
             if (userId === 'null' || userId === null) {
                 alert('Please log in to add items to cart');

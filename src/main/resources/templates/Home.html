@@ -60,7 +60,7 @@
 		function addToCart(button) {
 			const productId = button.getAttribute('data-product-id');
 			// Get User ID from Session (injected by Thymeleaf)
-			const userId = [[${ session.user != null ? session.user.u_id : 'null' }]];
+			const userId = /*[[${ session.user != null ? session.user.u_id : 'null' }]]*/ 'null';
 
 			if (userId === 'null' || userId === null) {
 				alert('Please log in to add items to cart');
