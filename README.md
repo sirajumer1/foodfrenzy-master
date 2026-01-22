@@ -4,15 +4,27 @@ FoodFrenzy is a comprehensive system designed for managing customers, inventory,
 ![Screenshot 2024-10-02 123332](https://github.com/user-attachments/assets/1382d32f-3cbb-40c3-b6b5-9fc55cd5176f)
 
 
-## Features
+## ✨ **Features**
 
-- **Customer Management**: Easily add, update, and delete customer information.
-- **Inventory Management**: Keep track of your inventory items, including stock levels and pricing.
-- **Order Management**: Manage customer orders, including order creation, updates, and status tracking.
-- **User Authentication**: Secure login and authentication for admin and staff members.
-- **Role-Based Access Control**: Define roles and permissions for different user types.
-- **Thymeleaf Templates**: Utilizes Thymeleaf for dynamic HTML templates.
-- **Database Integration**: Integrated with MySQL for data storage and retrieval.
+
+<table>
+<tr>
+<td><b>👥 Customer Management</b></td>
+<td><b>📦 Inventory Tracking</b></td>
+</tr>
+<tr>
+<td>Add/Edit/Delete customers</td>
+<td>Real-time stock levels</td>
+</tr>
+<tr>
+<td>Order history tracking</td>
+<td>Price management</td>
+</tr>
+<tr>
+<td>Customer analytics</td>
+<td>Low stock alerts</td>
+</tr>
+</table>: Integrated with MySQL for data storage and retrieval.
 
 ## Technology Stack
 
