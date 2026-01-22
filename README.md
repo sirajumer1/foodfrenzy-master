@@ -2,7 +2,7 @@
 FoodFrenzy is a comprehensive system designed for managing customers, inventory, and orders. It offers secure authentication, role-based access control, and database integration using MySQL. Built with Spring Boot and Thymeleaf, the application provides a seamless experience for admin and staff members.
 
 
-![Home Page](resources\static\Images\home.png)
+![Home Page](src/main/resources/static/images/home.png)
 
 ## Features
 
@@ -65,15 +65,15 @@ Before running this project, ensure you have the following installed:
 
 | **Home Page** | **Admin Dashboard** | **Orders** |
 |---------------|-------------------|------------|
-| ![Home](resources/static/images/home.png){width=200} | ![Dashboard](resources/static/images/admindashboard.png){width=200} | ![Orders](resources/static/images/orders.png){width=200} |
+| ![Home](src/main/resources/static/images/home.png){width=200} | ![Dashboard](src/main/resources/static/images/adminDashboard.png){width=200} | ![Orders](src/main/resources/static/images/orders.png){width=200} |
 
 | **Menu** | **Cart** | **Payment** |
 |----------|----------|-------------|
-| ![Menu](resources/static/images/menu.png){width=200} | ![Cart](resources/static/images/cart1.png){width=200} | ![Payment](resources/static/images/payment.png){width=200} |
+| ![Menu](src/main/resources/static/images/menu.png){width=200} | ![Cart](src/main/resources/static/images/cart1.png){width=200} | ![Payment](src/main/resources/static/images/payment.png){width=200} |
 
 | **Database** |
 |--------------|
-| ![Database](resources/static/images/database1.png){width=400} |
+| ![Database](src/main/resources/static/images/database1.png){width=400} |
 
 </div>
 
