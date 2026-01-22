@@ -6,7 +6,7 @@ FoodFrenzy is a comprehensive system designed for managing customers, inventory,
 
 ## ✨ **Features**
 
-
+<div align="center">
 <table>
 <tr>
 <td><b>👥 Customer Management</b></td>
@@ -25,7 +25,7 @@ FoodFrenzy is a comprehensive system designed for managing customers, inventory,
 <td>Low stock alerts</td>
 </tr>
 </table>: Integrated with MySQL for data storage and retrieval.
-
+</div>    
 ## Technology Stack
 
 - **Backend**: Spring Boot, Java 8, Spring MVC, Spring Data JPA (Hibernate)
