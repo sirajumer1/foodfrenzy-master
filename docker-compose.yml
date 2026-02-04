@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MYSQL_URL=jdbc:mysql://host.docker.internal:3306/foodfrenzy?createDatabaseIfNotExist=true
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
